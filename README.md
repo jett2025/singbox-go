@@ -5,7 +5,7 @@ Go 版 sing-box 一键部署管理工具。
 ## 前置要求
 
 - Linux VPS（Debian 12 推荐）
-- sing-box 已安装（`apt install sing-box` 或从 [官方](https://sing-box.sagernet.org) 下载）
+- sing-box 已安装（`curl -fsSL https://sing-box.app/install.sh | sudo sh` 或从 [官方](https://sing-box.sagernet.org) 下载）
 
 ## 安装
 
@@ -36,7 +36,7 @@ sudo mv singbox-go /usr/local/bin/
 
 ```bash
 # 部署节点（必须指定协议=端口，可选指定域名和名称前缀）
-sudo singbox-go deploy -p xtls-reality=9001,hysteria2=9002,tuic=9003,shadowtls=9004,shadowsocks=9005,trojan=9006,vmess-ws=9007,h2-reality=9008,grpc-reality=9009,anytls=9010,naive=9011
+sudo singbox-go deploy -p xtls-reality=9001,hysteria2=9002,tuic=9003,shadowtls=9004,shadowsocks=9005,trojan=9006,vmess-ws=9007,h2-reality=9008,grpc-reality=9009,anytls=9010,naive=9011 --domain dmit.us.rootde.com --name dmit
 
 # 使用域名部署
 sudo singbox-go deploy -p xtls-reality=9001 --domain example.com
