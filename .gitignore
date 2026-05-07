@@ -1,0 +1,6 @@
+*.exe
+singbox-go
+singbox-go-linux-*
+.claude/
+AGENTS.md
+CLAUDE.md
