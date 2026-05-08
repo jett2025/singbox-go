@@ -36,7 +36,7 @@ sudo mv singbox-go /usr/local/bin/
 
 ```bash
 # 部署节点（必须指定协议=端口，可选指定域名和名称前缀）
-sudo singbox-go deploy -p xtls-reality=9001,hysteria2=9002,tuic=9003,shadowtls=9004,shadowsocks=9005,trojan=9006,vmess-ws=9007,h2-reality=9008,grpc-reality=9009,anytls=9010,naive=9011 --domain dmit.us.rootde.com --name dmit
+sudo singbox-go deploy -p xtls-reality=9001,hysteria2=9002,tuic=9003,shadowtls=9004,shadowsocks=9005,trojan=9006,vmess-ws=9007,h2-reality=9008,grpc-reality=9009,anytls=9010,naive=9011
 
 # 使用域名部署
 sudo singbox-go deploy -p xtls-reality=9001 --domain example.com
@@ -81,6 +81,8 @@ sudo singbox-go stop
 | `grpc-reality` | gRPC + Reality |
 | `anytls` | AnyTLS |
 | `naive` | NaiveProxy |
+| `http` | HTTP 代理 |
+| `socks5` | SOCKS5 代理 |
 
 ## 输出文件
 

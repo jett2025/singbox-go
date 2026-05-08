@@ -266,6 +266,12 @@ func BuildURI(protocol string, node *NodeInfo, port int, addr, name string) stri
 		return fmt.Sprintf("naive+https://%s:%s@%s:%d#%s",
 			url.QueryEscape(node.UUID), url.QueryEscape(node.UUID), addr, port, fragment)
 
+	case "http":
+		return fmt.Sprintf("http://%s:%d#%s", addr, port, fragment)
+
+	case "socks5":
+		return fmt.Sprintf("socks5://%s:%d#%s", addr, port, fragment)
+
 	default:
 		return fmt.Sprintf("%s://%s:%d#%s", protocol, addr, port, fragment)
 	}
@@ -350,6 +356,12 @@ func buildClashProxyLine(protocol string, port int, addr string, node *NodeInfo,
 
 	case "naive":
 		return ""
+
+	case "http":
+		return fmt.Sprintf(`{name: "%s", type: http, server: %s, port: %d}`, label, addr, port)
+
+	case "socks5":
+		return fmt.Sprintf(`{name: "%s", type: socks5, server: %s, port: %d}`, label, addr, port)
 
 	default:
 		return fmt.Sprintf(`{name: "%s", server: %s, port: %d}`, label, addr, port)

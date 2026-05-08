@@ -14,6 +14,7 @@ var validProtocols = []string{
 	"xtls-reality", "hysteria2", "tuic", "shadowtls",
 	"shadowsocks", "trojan", "vmess-ws",
 	"h2-reality", "grpc-reality", "anytls", "naive",
+	"http", "socks5",
 }
 
 func isValidProtocol(name string) bool {

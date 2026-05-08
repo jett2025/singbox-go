@@ -114,6 +114,10 @@ func BuildInbounds(entries []ProtocolEntry, node *NodeInfo, cert *CertPair, real
 			raw = buildAnyTLS(e.Port, node.Name, node.UUID, cert)
 		case "naive":
 			raw = buildNaive(e.Port, node.Name, node.UUID, cert)
+		case "http":
+			raw = buildHTTP(e.Port, node.Name)
+		case "socks5":
+			raw = buildSocks5(e.Port, node.Name)
 		default:
 			err = fmt.Errorf("未实现的协议: %s", e.Name)
 		}
@@ -589,5 +593,33 @@ func buildNaive(port int, name, uuid string, cert *CertPair) json.RawMessage {
 	v.TLS.CertPath = Cert200File
 	v.TLS.KeyPath = KeyFile
 
+	return mustJSON(v)
+}
+
+func buildHTTP(port int, name string) json.RawMessage {
+	var v struct {
+		Type       string `json:"type"`
+		Tag        string `json:"tag"`
+		Listen     string `json:"listen"`
+		ListenPort int    `json:"listen_port"`
+	}
+	v.Type = "http"
+	v.Tag = name + " http"
+	v.Listen = "::"
+	v.ListenPort = port
+	return mustJSON(v)
+}
+
+func buildSocks5(port int, name string) json.RawMessage {
+	var v struct {
+		Type       string `json:"type"`
+		Tag        string `json:"tag"`
+		Listen     string `json:"listen"`
+		ListenPort int    `json:"listen_port"`
+	}
+	v.Type = "socks"
+	v.Tag = name + " socks5"
+	v.Listen = "::"
+	v.ListenPort = port
 	return mustJSON(v)
 }
